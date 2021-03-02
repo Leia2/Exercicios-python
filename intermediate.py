@@ -357,7 +357,7 @@ while True:
         break
     else:
         print("Password is not fine")
-'''
+
 #Exercício 80
 #Create a script that lets user submit a password until they have satisfied
 #three conditions:
@@ -382,4 +382,41 @@ while True:
         print("Please check the following: ")
         for note in notes:
             print(note)
+'''
+#Exercício 81
+#Create a script that lets the user submit a password until they have satisfied
+#three conditions:
+#1. Password contains at least one number
+#2. Contains one uppercase letter
+#3. It is at least 5 chars long
+#Give the exact reason why the user has not created a correct password
+#Before asking for password, ask for username
+
+while True:
+    username = input("Enter your name: ")    
+    with open('users.txt') as file:
+        users = file.readlines()
+        users = [i.strip("\n") for i in users]
         
+    if username not in users:
+        print("Correct Name")
+        break        
+    else:
+        print("Name already exist")
+        continue 
+while True:
+    notes = []
+    psw = input("Enter your password: ")
+    if not any(i.isdigit() for i in psw):
+        notes.append("You need at least one number")
+    if not any(i.isupper() for i in psw):
+        notes.append("You need at least one uppercase letter")
+    if len(psw)<5:
+        notes.append("You need at least 5 chars long")
+    if len(notes) ==0:
+        print("Password is fine")
+        break
+    else:
+        print("Please check the following: ")
+        for note in notes:
+            print(note)
